@@ -22,7 +22,7 @@ class Record:
         self.tag_types.append(TagType(tag_type))
     def add_tag(self, tag_name, tag_start, tag_end):
         self.tags.append(Tag(tag_name, tag_start, tag_end))
-    def add_tag_from_type(self, tag_type,tag_start, tag_end):
+    def add_tag_from_type(self, tag_type  ,tag_start, tag_end):
         self.tags.append(Tag(str(tag_type)), tag_start, tag_end)
     def read_tags(self):
         return f'{self.name} has tags {self.tags}'
@@ -30,10 +30,13 @@ class Record:
         return f'{self.name} is a Record'
     
 class ImportedDocument:
-    def __init__(self, name, input_doc, index_of_records) -> None:
+    def __init__(self, name, input_doc) -> None:
         self.name = name
         self.list_of_records = []
         for i in input_doc:
-            self.list_of_records.append(Record(i[index_of_records]))
+            doc_list = []
+            for j in i:
+                doc_list.append(Record(j))
+            self.list_of_records.append(doc_list)
     def __repr__(self) -> str:
         return f'{self.name} an imported document of {len(self.list_of_records)} records'    
