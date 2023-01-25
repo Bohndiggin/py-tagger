@@ -1,6 +1,7 @@
 from tkinter import *
 from tkinter import ttk
 from tkinter import filedialog
+import pandas as pd
 import csv
 
 from utils import *
